@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 public class PlayField extends Application {
 
+    //Game stage elements, needed across all files
     public static Group root = new Group();
     public static Scene scene = new Scene(root,1400, 800, Color.BLACK);
     public static Line half = new Line(scene.getWidth() / 2, 0, scene.getWidth() / 2, scene.getHeight());
@@ -18,24 +19,30 @@ public class PlayField extends Application {
     @Override
     public void start(Stage stage) {
 
+        //Initializing the game elements
         half.setStroke(Color.WHITE);
         half.setStrokeWidth(5);
         root.getChildren().add(half);
 
-
+        //Declaring and adding to the root the 2 players
         Susser impostor = new Susser(350, 400, 10, Color.RED);
         Susser crewmate = new Susser(1050, 400, 10, Color.CYAN);
         root.getChildren().addAll(impostor, crewmate);
 
+        //Main game loop
         AnimationTimer frames = new AnimationTimer() {
             @Override
             public void handle(long l) {
+
+                //Updating the 2 players
                 impostor.update(crewmate);
                 crewmate.update(impostor);
             }
         };
-        frames.start();
 
+        frames.start(); //Starting the game
+
+        //Assigning KeyEvent listeners
         scene.setOnKeyPressed(keyEvent -> {
             switch (keyEvent.getCode()) {
                 //Imposter
@@ -69,6 +76,7 @@ public class PlayField extends Application {
             }
         });
 
+        //Setting up the stage
         stage.setTitle("Sussy Squares");
         stage.setResizable(false);
         stage.setScene(scene);
