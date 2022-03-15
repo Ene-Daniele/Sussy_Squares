@@ -90,7 +90,7 @@ public class Susser extends Rectangle {
         objectCollision(opponent);
 
         //Checking if either played lost, play their respective win animations
-        if (opponent.getHp() <= 0){
+        if (opponent.getHp() <= 0 && this.getHp() > 0){
             this.setRotate(winAnimation);
             winAnimation++;
         } else if (this.getHp() <= 0){
