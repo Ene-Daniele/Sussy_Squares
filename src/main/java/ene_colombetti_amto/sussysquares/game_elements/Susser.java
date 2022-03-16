@@ -64,7 +64,21 @@ public class Susser extends Rectangle {
 
         //Adding these elements to the root
         PlayField.root.getChildren().add(rocketTelegraph);
+        rocketTelegraph.setStartAngle(90); //Make it start from above the player
+        rocketTelegraph.setRadiusY(75); //Setting the radius
+        rocketTelegraph.setRadiusX(75);
+        rocketTelegraph.setType(ArcType.OPEN); //Setting its type
+        rocketTelegraph.setStrokeWidth(5);
+        rocketTelegraph.setStroke(Color.GRAY); //Setting its colors
+        rocketTelegraph.setFill(Color.rgb(0,0,0,0.5));
         PlayField.root.getChildren().add(hpTelegraph);
+        hpTelegraph.setStartAngle(90);
+        hpTelegraph.setRadiusY(60);
+        hpTelegraph.setRadiusX(60);
+        hpTelegraph.setType(ArcType.OPEN);
+        hpTelegraph.setStrokeWidth(4);
+        hpTelegraph.setStroke(Color.rgb(255,166,183, 0.6));
+        hpTelegraph.setFill(Color.rgb(0,0,0,0.3));
 
         this.setFill(color);
     }
@@ -183,29 +197,15 @@ public class Susser extends Rectangle {
 
         rocketTelegraph.setCenterX(this.getX() + this.getWidth() / 2); //Put it in the center of the player
         rocketTelegraph.setCenterY(this.getY() + this.getHeight() / 2);
-        rocketTelegraph.setStartAngle(90); //Make it start from above the player
         rocketTelegraph.setLength(rocketCharge); //Rocket charge handles its length
-        rocketTelegraph.setRadiusY(75); //Setting the radius
-        rocketTelegraph.setRadiusX(75);
-        rocketTelegraph.setType(ArcType.OPEN); //Setting its type
-        rocketTelegraph.setStrokeWidth(5);
-        rocketTelegraph.setStroke(Color.GRAY); //Setting its colors
-        rocketTelegraph.setFill(Color.rgb(0,0,0,0.5));
 
         hpTelegraph.setCenterX(this.getX() + this.getWidth() / 2);
         hpTelegraph.setCenterY(this.getY() + this.getHeight() / 2);
-        hpTelegraph.setStartAngle(90);
         if (hp >= 0){
             hpTelegraph.setLength(hp * 120);
         } else { //There was a small bug where the player would lose but his hp wouldn't go down anymore, so I forced it
             hpTelegraph.setLength(0);
         }
-        hpTelegraph.setRadiusY(60);
-        hpTelegraph.setRadiusX(60);
-        hpTelegraph.setType(ArcType.OPEN);
-        hpTelegraph.setStrokeWidth(4);
-        hpTelegraph.setStroke(Color.rgb(255,166,183, 0.6));
-        hpTelegraph.setFill(Color.rgb(0,0,0,0.3));
     }
 
     /**
